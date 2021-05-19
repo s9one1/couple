@@ -19,12 +19,23 @@
         <h3 id="love">0일째</h3>
         <h4 class="date">2021.3.1</h4>
     </div>
-
-    <hr>
-
-
-
-
+    <hr/>
+    <section class='special-day'>
+        <h3 class='title'>크리스마스</h3>
+        <div class='date-box'>
+            <p id='christmas' class='days-left'>0일 남음</p>
+            <p class='date'>2021.12.25</p>
+        </div>
+    </section>
+    <hr/>
+    <section class='special-day'>
+        <h3 class='title'>1000일</h3>
+        <div class='date-box'>
+            <p id='thousand' class='days-left'>0일 남음</p>
+            <p id='thousand-date' class='date'>0000.00.00</p>
+        </div>
+    </section>
+    <hr/>
     <script>
         var now = new Date();
         var start =  new Date("2021-03-01");
@@ -34,7 +45,19 @@
         //555555ms -> seconds -> 분 -> 시 -> 일
         $("#love").text(day + '일째');
 
+        var xmas = new Date('2021-12-25');
+        var timeDiffXmas = xmas.getTime() - now.getTime();
+        var dayXmas = Math.floor(timeDiffXmas / (1000 * 60 * 60 * 24) + 1);
+        $("#christmas").text(dayXmas + '일 남음');  
+        var ms = start.getTime() + 999 * (1000 * 60 * 60 * 24);
+        var thousand = new Date(ms);
+        var thousandDate = 
+            thousand.getFullYear() + '.' + (thousand.getMonth()+1) + '.' + thousand.getDate();
+        $("#thousand-date").text(thousandDate);
 
+        var timeDiff1000 = thousand.getTime() - now.getTime();
+        var day1000 = Math.floor(timeDiff1000 / (1000 * 60 * 60 * 24) + 1);
+        $("#thousand").text(day1000 + '일 남음'); 
         /* var person = {
             name: "uhs",
             age: 100,
